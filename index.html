@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextCharge - World Cup 2026 Ready</title>
+    <meta name="description"
+        content="Prepare your Atlanta business for the World Cup 2026. NextCharge and Clover payment solutions for high-volume international traffic.">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons (CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Oswald:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                        sport: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0b1120', // Deep Navy
+                            primary: '#0055aa', // NextCharge Blue
+                            clover: '#0ea5e9', // Sky 500 (Vibrant Cyan/Blue)
+                            wc: {
+                                gold: '#fbbf24', // Amber 400
+                            }
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url('clover_pos_hero.png')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(14, 165, 233, 0.4);
+            /* Blue border on hover */
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-brand-dark text-slate-300 font-sans selection:bg-brand-clover selection:text-white overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 transition-all duration-300 py-3 glass border-b border-white/5">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <!-- User should replace this with their logo file -->
+                <img src="logonext.png" alt="NextCharge Logo"
+                    class="h-10 object-contain filter brightness-200 contrast-125"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div style="display:none" class="flex items-center gap-2">
+                    <i data-lucide="zap" class="w-6 h-6 text-brand-clover fill-brand-clover"></i>
+                    <span class="text-xl font-display font-bold text-white tracking-tight">NextCharge</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#worldcup"
+                    class="text-sm font-bold text-white hover:text-brand-wc-gold transition-colors flex items-center gap-2 uppercase tracking-wide">
+                    <i data-lucide="trophy" class="w-4 h-4 text-brand-wc-gold"></i> Atlanta 2026
+                </a>
+                <a href="#solutions" class="text-sm font-medium hover:text-white transition-colors">Solutions</a>
+                <a href="#contact"
+                    class="bg-brand-clover hover:bg-blue-500 text-white px-6 py-2.5 rounded-full font-bold text-sm transition shadow-lg shadow-blue-900/50 flex items-center gap-2">
+                    Get Ready
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white"
+                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 w-full glass border-t border-white/10 p-4 flex flex-col space-y-4 shadow-xl">
+            <a href="#worldcup" class="text-brand-wc-gold font-bold block flex items-center gap-2"><i
+                    data-lucide="trophy" class="w-4 h-4"></i> Atlanta 2026</a>
+            <a href="#solutions" class="text-slate-300 hover:text-white block">Solutions</a>
+            <a href="#contact" class="bg-brand-clover text-white w-full py-3 rounded-lg font-bold block text-center">Get
+                Ready</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12">
+        <!-- Background -->
+        <div class="absolute inset-0 z-0">
+            <img src="clover_pos_hero.png" onerror="this.src='hero_bg.png'"
+                class="w-full h-full object-cover opacity-60" alt="Clover POS in Atlanta">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 to-brand-dark/40"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+
+                <!-- Text Content -->
+                <div class="w-full lg:w-3/5 space-y-8 animate-fade-in">
+                    <div
+                        class="inline-flex items-center gap-2 bg-brand-clover/10 border border-brand-clover/30 text-brand-clover px-4 py-2 rounded-full text-sm font-bold uppercase tracking-widest backdrop-blur-md">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i> World Cup Readiness
+                    </div>
+
+                    <h1
+                        class="text-6xl lg:text-8xl font-sport font-bold leading-tight text-white uppercase italic tracking-tighter pb-2">
+                        Geared Up<br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-clover via-cyan-400 to-blue-600 drop-shadow-sm pr-4">For
+                            The Game</span>
+                    </h1>
+
+                    <p class="text-xl text-slate-300 leading-relaxed max-w-xl border-l-4 border-brand-clover pl-6">
+                        Atlanta 2026 will bring millions of international fans. <br>
+                        Ensure your business accepts <strong>every card, every currency, and every fan</strong>
+                        seamlessly with NextCharge & Clover.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <button onclick="document.getElementById('contact').scrollIntoView()"
+                            class="group bg-brand-clover hover:bg-blue-500 text-white text-xl px-8 py-5 rounded-lg font-bold font-sport uppercase tracking-wider transition shadow-[0_0_30px_rgba(14,165,233,0.3)] flex items-center gap-3">
+                            Start Now
+                            <i data-lucide="arrow-right-circle" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+
+                    <div class="pt-6 flex items-center gap-6 opacity-80">
+                        <div class="flex -space-x-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-slate-800 border-2 border-brand-dark flex items-center justify-center text-xs">
+                                🇺🇸</div>
+                            <div
+                                class="w-10 h-10 rounded-full bg-slate-800 border-2 border-brand-dark flex items-center justify-center text-xs">
+                                🇪🇸</div>
+                            <div
+                                class="w-10 h-10 rounded-full bg-slate-800 border-2 border-brand-dark flex items-center justify-center text-xs">
+                                🇧🇷</div>
+                            <div
+                                class="w-10 h-10 rounded-full bg-slate-800 border-2 border-brand-dark flex items-center justify-center text-xs font-bold text-white max-md:hidden">
+                                +40</div>
+                        </div>
+                        <p class="text-sm text-slate-400 font-medium">Accept global payments easily.</p>
+                    </div>
+                </div>
+
+                <!-- Hero Visual -->
+                <div class="w-full lg:w-2/5 relative hidden lg:block">
+                    <div class="absolute -inset-4 bg-brand-clover/20 rounded-full blur-3xl animate-pulse"></div>
+                    <div
+                        class="glass-card p-6 rounded-3xl relative z-10 transform -rotate-2 hover:rotate-0 transition duration-500 border-t-4 border-t-brand-clover">
+                        <div class="flex justify-between items-start mb-8">
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase">Speed</p>
+                                <h3 class="text-4xl font-mono font-bold text-white mt-1">0.8s <span
+                                        class="text-brand-clover text-sm">per txn</span></h3>
+                            </div>
+                            <!-- Clover Logo Placeholder -->
+                            <div class="font-bold text-2xl tracking-tighter text-white">clover</div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded bg-blue-500/20 flex items-center justify-center text-xl">
+                                        💳</div>
+                                    <div>
+                                        <p class="text-sm font-bold text-white">Tap to Pay</p>
+                                        <p class="text-xs text-slate-500">Contactless Approved</p>
+                                    </div>
+                                </div>
+                                <span class="font-mono text-brand-clover"><i data-lucide="check"
+                                        class="inline w-3 h-3"></i></span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded bg-yellow-500/20 flex items-center justify-center text-xl">
+                                        🍺</div>
+                                    <div>
+                                        <p class="text-sm font-bold text-white">Sports Bar Layout</p>
+                                        <p class="text-xs text-slate-500">Order #2245 - Paid</p>
+                                    </div>
+                                </div>
+                                <span class="font-mono text-slate-300">$45.00</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded bg-red-500/20 flex items-center justify-center text-xl">
+                                        👕</div>
+                                    <div>
+                                        <p class="text-sm font-bold text-white">Team Jersey</p>
+                                        <p class="text-xs text-slate-500">Inventory Updated</p>
+                                    </div>
+                                </div>
+                                <span class="font-mono text-slate-300">$120.00</span>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-6 pt-4 border-t border-white/5 flex justify-between items-center text-xs text-slate-400">
+                            <span>Live Transaction Feed</span>
+                            <span class="flex items-center gap-1 text-cyan-400">
+                                <div class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div> Online
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORLD CUP SECTION -->
+    <section id="worldcup" class="py-20 bg-brand-dark/50 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/2">
+                    <img src="clover_flex_handheld.png"
+                        class="rounded-3xl shadow-2xl border border-white/10 w-full object-cover h-[500px]"
+                        alt="Clover Flex Handheld at Stadium">
+                </div>
+                <div class="md:w-1/2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-lucide="calendar-clock" class="text-brand-wc-gold w-6 h-6"></i>
+                        <span class="text-brand-wc-gold font-bold uppercase tracking-wider text-sm">Countdown: Atlanta
+                            2026</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-sport font-bold text-white mb-6 uppercase">
+                        Don't Let Old Tech<br>Benchmark You
+                    </h2>
+                    <p class="text-slate-400 mb-8 text-lg">
+                        Customer traffic will triple. Outdated systems create endless lines and frustrated fans.
+                        Our Clover systems are battle-tested for high-volume environments.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                            <div class="bg-blue-500/20 p-2 rounded-full"><i data-lucide="wifi"
+                                    class="text-blue-500 w-5 h-5"></i></div>
+                            <span class="text-white font-medium">99.99% Uptime Reliability</span>
+                        </li>
+                        <li class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                            <div class="bg-blue-500/20 p-2 rounded-full"><i data-lucide="refresh-ccw"
+                                    class="text-blue-500 w-5 h-5"></i></div>
+                            <span class="text-white font-medium">Auto Currency Conversion</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTIONS GRID -->
+    <section id="solutions" class="py-24 relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-sport font-bold text-white uppercase mb-4">Winning Lineup</h2>
+                <p class="text-slate-400">Everything you need to win in 2026.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-card p-8 rounded-2xl hover:bg-white/5 transition group cursor-pointer">
+                    <i data-lucide="smartphone"
+                        class="w-12 h-12 text-brand-clover mb-6 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Clover Flex</h3>
+                    <p class="text-slate-400 text-sm">Take the line to the street. Handheld terminals to serve fans
+                        wherever they are.</p>
+                </div>
+                <div
+                    class="glass-card p-8 rounded-2xl hover:bg-white/5 transition group cursor-pointer border-brand-wc-gold/20">
+                    <i data-lucide="shield-check"
+                        class="w-12 h-12 text-brand-wc-gold mb-6 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Ironclad Security</h3>
+                    <p class="text-slate-400 text-sm">Protection against international fraud. Your money safe, always.
+                    </p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl hover:bg-white/5 transition group cursor-pointer">
+                    <i data-lucide="layout-dashboard"
+                        class="w-12 h-12 text-blue-400 mb-6 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Live Analytics</h3>
+                    <p class="text-slate-400 text-sm">Watch your sales in real-time as the match happens.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="bg-gradient-to-br from-brand-clover to-blue-900 rounded-3xl p-1">
+                <div class="bg-brand-dark rounded-[22px] p-8 md:p-16 text-center overflow-hidden relative">
+                    <div
+                        class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10">
+                    </div>
+
+                    <div class="relative z-10 max-w-2xl mx-auto">
+                        <h2 class="text-4xl md:text-6xl font-sport font-bold text-white mb-6 uppercase italic">Get In
+                            The Game!</h2>
+                        <p class="text-xl text-slate-300 mb-10">
+                            Kickoff is approaching. Schedule a demo today and get a free audit of your current system.
+                        </p>
+
+                        <form class="space-y-4 text-left">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-xs font-bold text-slate-400 uppercase ml-1">Full Name</label>
+                                    <input type="text" placeholder="John Doe"
+                                        class="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-brand-clover transition">
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold text-slate-400 uppercase ml-1">Phone Number</label>
+                                    <input type="tel" placeholder="(555) 123-4567"
+                                        class="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-brand-clover transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="text-xs font-bold text-slate-400 uppercase ml-1">Business Name</label>
+                                <input type="text" placeholder="Your Business LLC"
+                                    class="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-brand-clover transition">
+                            </div>
+
+                            <div>
+                                <label class="text-xs font-bold text-slate-400 uppercase ml-1">Email Address</label>
+                                <input type="email" placeholder="john@example.com"
+                                    class="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-brand-clover transition">
+                            </div>
+
+                            <button
+                                class="w-full bg-brand-clover hover:bg-blue-500 text-white font-bold text-xl py-4 rounded-xl shadow-lg transition uppercase tracking-wide mt-4">
+                                Request Free Audit
+                            </button>
+                        </form>
+                        <p class="mt-6 text-sm text-slate-500">Authorized Partner • Atlanta, GA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 py-16 border-t border-white/10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="logonext.png" class="h-8 object-contain filter brightness-200 contrast-200"
+                            alt="Nextcharge"> <!-- Enhanced Logo -->
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Powering Atlanta's businesses with world-class payment technology. Get ready for the global
+                        stage.
+                    </p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="text-slate-400 hover:text-brand-clover transition"><i data-lucide="linkedin"
+                                class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-brand-clover transition"><i data-lucide="twitter"
+                                class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-brand-clover transition"><i data-lucide="instagram"
+                                class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-bold uppercase text-sm tracking-wider mb-6">Company</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition">Partners</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-white font-bold uppercase text-sm tracking-wider mb-6">Solutions</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-white transition">Retail POS</a></li>
+                        <li><a href="#" class="hover:text-white transition">Restaurant Systems</a></li>
+                        <li><a href="#" class="hover:text-white transition">Mobile Payments</a></li>
+                        <li><a href="#" class="hover:text-white transition">E-Commerce</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold uppercase text-sm tracking-wider mb-6">Contact Us</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 mt-1 text-brand-clover"></i>
+                            <span>Atlanta, GA<br>United States</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 text-brand-clover"></i>
+                            <span>(800) 123-4567</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 text-brand-clover"></i>
+                            <span>hello@nextcharge.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-600">
+                <p>&copy; 2026 NextCharge Solutions. All rights reserved.</p>
+                <div class="flex items-center gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-slate-400 transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-400 transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
