@@ -364,33 +364,42 @@
                             Kickoff is approaching. Schedule a demo today and get a free audit of your current system.
                         </p>
 
-                        <form class="space-y-4 text-left">
+                        <form action="https://formsubmit.co/carolina@nextchargesolutions.com" method="POST"
+                            class="space-y-4 text-left">
+                            <!-- Helper Fields -->
+                            <input type="hidden" name="_cc" value="nelsondcarvajal@gmail.com">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_subject" value="New Contact from NextCharge Landing">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://nextchargesolutions.com/thankyou.html">
+                            <!-- Optional: Redirect to a thank you page if it exists, or remove to stay on page -->
+
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="text-xs font-bold text-slate-400 uppercase ml-1">Full Name</label>
-                                    <input type="text" placeholder="John Doe"
+                                    <input type="text" name="name" placeholder="John Doe" required
                                         class="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-brand-clover transition">
                                 </div>
                                 <div>
                                     <label class="text-xs font-bold text-slate-400 uppercase ml-1">Phone Number</label>
-                                    <input type="tel" placeholder="(555) 123-4567"
+                                    <input type="tel" name="phone" placeholder="(555) 123-4567" required
                                         class="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-brand-clover transition">
                                 </div>
                             </div>
 
                             <div>
                                 <label class="text-xs font-bold text-slate-400 uppercase ml-1">Business Name</label>
-                                <input type="text" placeholder="Your Business LLC"
+                                <input type="text" name="business_name" placeholder="Your Business LLC"
                                     class="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-brand-clover transition">
                             </div>
 
                             <div>
                                 <label class="text-xs font-bold text-slate-400 uppercase ml-1">Email Address</label>
-                                <input type="email" placeholder="john@example.com"
+                                <input type="email" name="email" placeholder="john@example.com" required
                                     class="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-brand-clover transition">
                             </div>
 
-                            <button
+                            <button type="submit"
                                 class="w-full bg-brand-clover hover:bg-blue-500 text-white font-bold text-xl py-4 rounded-xl shadow-lg transition uppercase tracking-wide mt-4">
                                 Request Free Audit
                             </button>
