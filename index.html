@@ -101,6 +101,22 @@
         .animate-float {
             animation: float 6s ease-in-out infinite;
         }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
     </style>
 </head>
 
@@ -412,50 +428,62 @@
                         </form>
                         <script>
                             document.getElementById('contactForm').addEventListener('submit', function (e) {
-                                e.preventDefault(); // Prevent default submission initially
-
+                                e.preventDefault();
                                 const form = this;
                                 const submitBtn = document.getElementById('submitBtn');
-                                const originalBtnText = submitBtn.innerText;
 
-                                // Disable button to prevent double submission
+                                // Disable button
                                 submitBtn.disabled = true;
                                 submitBtn.innerText = "Sending...";
 
-                                // Gather data
+                                // Gather data for Webhook
                                 const formData = new FormData(form);
                                 const jsonData = {
                                     "name": formData.get('name'),
                                     "email": formData.get('email'),
                                     "phone": formData.get('phone'),
-                                    "company": formData.get('business_name'), // Mapping business_name to company
+                                    "company": formData.get('business_name'),
                                     "role": formData.get('role')
                                 };
 
-                                // Webhook URL
-                                const webhookUrl = "https://evolution-boost-leads-prueba.0fdovo.easypanel.host/api/webhooks?source=web&apiKey=cmloj4mi6000e4vpaup6t5vai";
+                                // URLs
+                                const webhookUrl = "https://corsproxy.io/?" + encodeURIComponent("https://evolution-boost-leads-prueba.0fdovo.easypanel.host/api/webhooks?source=web&apiKey=cmloj4mi6000e4vpaup6t5vai");
+                                const formSubmitUrl = "https://formsubmit.co/ajax/carolina@nextchargesolutions.com";
 
-                                // Send to Webhook
-                                fetch(webhookUrl, {
+                                // 1. Send to Webhook (Background)
+                                const sendWebhook = fetch(webhookUrl, {
                                     method: "POST",
-                                    headers: {
-                                        "Content-Type": "application/json"
-                                    },
+                                    headers: { "Content-Type": "application/json" },
                                     body: JSON.stringify(jsonData)
-                                })
-                                    .then(response => {
-                                        console.log("Webhook success:", response);
-                                    })
-                                    .catch(error => {
-                                        console.error("Webhook error:", error);
-                                    })
-                                    .finally(() => {
-                                        // Submit the form to FormSubmit.co regardless of webhook result
-                                        // We need to unbind the submit event handler or submit programmatically bypassing the listener
-                                        // simpler approach: Remove the 'submit' listener? No, just submit programmatically.
-                                        // But form.submit() bypasses 'submit' event handlers, which is exactly what we want.
-                                        form.submit();
-                                    });
+                                }).catch(err => console.error("Webhook error:", err));
+
+                                // 2. Send to FormSubmit (Email)
+                                const sendEmail = fetch(formSubmitUrl, {
+                                    method: "POST",
+                                    body: formData
+                                }).catch(err => console.error("FormSubmit error:", err));
+
+                                // Wait for both
+                                Promise.all([sendWebhook, sendEmail]).finally(() => {
+                                    // UI Success State
+                                    form.style.display = 'none';
+
+                                    const successDiv = document.createElement('div');
+                                    successDiv.className = "text-center py-12 animate-fade-in";
+                                    successDiv.innerHTML = `
+                                        <div class="inline-flex items-center justify-center w-24 h-24 bg-green-500/10 rounded-full mb-6 ring-1 ring-green-500/20">
+                                            <i data-lucide="check" class="w-12 h-12 text-green-400"></i>
+                                        </div>
+                                        <h3 class="text-3xl font-sport font-bold text-white mb-2 uppercase italic">Success!</h3>
+                                        <p class="text-slate-400 text-lg">Your audit request has been received.</p>
+                                        <button onclick="location.reload()" class="mt-8 text-sm text-brand-clover hover:text-white transition underline underline-offset-4">
+                                            Send another request
+                                        </button>
+                                    `;
+
+                                    form.parentNode.appendChild(successDiv);
+                                    lucide.createIcons();
+                                });
                             });
                         </script>
                         <p class="mt-6 text-sm text-slate-500">Authorized Partner • Atlanta, GA</p>
