@@ -364,8 +364,8 @@
                             Kickoff is approaching. Schedule a demo today and get a free audit of your current system.
                         </p>
 
-                        <form action="https://formsubmit.co/carolina@nextchargesolutions.com" method="POST"
-                            class="space-y-4 text-left">
+                        <form id="contactForm" action="https://formsubmit.co/carolina@nextchargesolutions.com"
+                            method="POST" class="space-y-4 text-left">
                             <!-- Helper Fields -->
                             <input type="hidden" name="_cc" value="nelsondcarvajal@gmail.com">
                             <input type="hidden" name="_template" value="table">
@@ -399,11 +399,65 @@
                                     class="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-brand-clover transition">
                             </div>
 
-                            <button type="submit"
+                            <div>
+                                <label class="text-xs font-bold text-slate-400 uppercase ml-1">Role / Cargo</label>
+                                <input type="text" name="role" placeholder="CTO, Manager, etc." required
+                                    class="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-brand-clover transition">
+                            </div>
+
+                            <button type="submit" id="submitBtn"
                                 class="w-full bg-brand-clover hover:bg-blue-500 text-white font-bold text-xl py-4 rounded-xl shadow-lg transition uppercase tracking-wide mt-4">
                                 Request Free Audit
                             </button>
                         </form>
+                        <script>
+                            document.getElementById('contactForm').addEventListener('submit', function (e) {
+                                e.preventDefault(); // Prevent default submission initially
+
+                                const form = this;
+                                const submitBtn = document.getElementById('submitBtn');
+                                const originalBtnText = submitBtn.innerText;
+
+                                // Disable button to prevent double submission
+                                submitBtn.disabled = true;
+                                submitBtn.innerText = "Sending...";
+
+                                // Gather data
+                                const formData = new FormData(form);
+                                const jsonData = {
+                                    "name": formData.get('name'),
+                                    "email": formData.get('email'),
+                                    "phone": formData.get('phone'),
+                                    "company": formData.get('business_name'), // Mapping business_name to company
+                                    "role": formData.get('role')
+                                };
+
+                                // Webhook URL
+                                const webhookUrl = "https://evolution-boost-leads-prueba.0fdovo.easypanel.host/api/webhooks?source=web&apiKey=cmloj4mi6000e4vpaup6t5vai";
+
+                                // Send to Webhook
+                                fetch(webhookUrl, {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+                                    body: JSON.stringify(jsonData)
+                                })
+                                    .then(response => {
+                                        console.log("Webhook success:", response);
+                                    })
+                                    .catch(error => {
+                                        console.error("Webhook error:", error);
+                                    })
+                                    .finally(() => {
+                                        // Submit the form to FormSubmit.co regardless of webhook result
+                                        // We need to unbind the submit event handler or submit programmatically bypassing the listener
+                                        // simpler approach: Remove the 'submit' listener? No, just submit programmatically.
+                                        // But form.submit() bypasses 'submit' event handlers, which is exactly what we want.
+                                        form.submit();
+                                    });
+                            });
+                        </script>
                         <p class="mt-6 text-sm text-slate-500">Authorized Partner • Atlanta, GA</p>
                     </div>
                 </div>
