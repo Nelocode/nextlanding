@@ -421,6 +421,22 @@
                                     class="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-brand-clover transition">
                             </div>
 
+                            <div>
+                                <label class="text-xs font-bold text-slate-400 uppercase ml-1">Volumen de Ventas</label>
+                                <select name="volumen_de_ventas" required
+                                    class="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-brand-clover transition appearance-none">
+                                    <option value="" disabled selected class="bg-slate-900">Select sales volume</option>
+                                    <option value="0 USD - 20.000 USD" class="bg-slate-900">0 USD - 20.000 USD</option>
+                                    <option value="20.000 USD - 40.000 USD" class="bg-slate-900">20.000 USD - 40.000 USD
+                                    </option>
+                                    <option value="40.000 USD - 60.000 USD" class="bg-slate-900">40.000 USD - 60.000 USD
+                                    </option>
+                                    <option value="80.000 USD - 100.000 USD" class="bg-slate-900">80.000 USD - 100.000
+                                        USD</option>
+                                    <option value="+100.000 USD" class="bg-slate-900">+100.000 USD</option>
+                                </select>
+                            </div>
+
                             <button type="submit" id="submitBtn"
                                 class="w-full bg-brand-clover hover:bg-blue-500 text-white font-bold text-xl py-4 rounded-xl shadow-lg transition uppercase tracking-wide mt-4">
                                 Request Free Audit
@@ -443,7 +459,8 @@
                                     "email": formData.get('email'),
                                     "phone": formData.get('phone'),
                                     "company": formData.get('business_name'),
-                                    "role": formData.get('role')
+                                    "role": formData.get('role'),
+                                    "volumen_de_ventas": formData.get('volumen_de_ventas')
                                 };
 
                                 // URLs
